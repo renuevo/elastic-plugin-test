@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.elasticsearch.gradle:build-tools:6.5.4"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'elasticsearch.esplugin'
+
+
+// license of this project
+licenseFile = rootProject.file('LICENSE.txt')
+
+// copyright notices
+noticeFile = rootProject.file('NOTICE.txt')
+
+group 'org.elastic.plugin'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+esplugin {
+    name 'es-plugin'
+    description 'An example plugin showing how to register custom settings'
+    classname 'org.elastic.plugin.TestCustomPlugin'
+    licenseFile rootProject.file('LICENSE.txt')
+    noticeFile rootProject.file('NOTICE.txt')
+}
+
+
+dependencies {
+    compile 'org.elasticsearch:elasticsearch:6.5.4'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'org.elasticsearch.test:framework:6.5.4'
+}
