@@ -1,5 +1,6 @@
 package org.elastic.plugin;
 
+import org.elastic.index.JamoTokenFilterFactory;
 import org.elastic.index.WhiteSpaceTokenFilterFactory;
 import org.elasticsearch.index.analysis.TokenFilterFactory;
 import org.elasticsearch.indices.analysis.AnalysisModule;
@@ -13,9 +14,9 @@ public class TestCustomPlugin extends Plugin implements AnalysisPlugin {
 
     @Override
     public Map<String, AnalysisModule.AnalysisProvider<TokenFilterFactory>> getTokenFilters() {
-
         Map<String, AnalysisModule.AnalysisProvider<TokenFilterFactory>> tokenizerFactories = new HashMap<>();
         tokenizerFactories.put("testElasticPlugin", WhiteSpaceTokenFilterFactory::new);
+        tokenizerFactories.put("jamo_filter", JamoTokenFilterFactory::new);
         return tokenizerFactories;
     }
 

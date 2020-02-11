@@ -13,6 +13,23 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'elasticsearch.esplugin'
 
+compileJava.options.encoding = 'UTF-8'
+javadoc.options.encoding = 'UTF-8'
+
+//tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+
+// Set to false to not use elasticsearch checkstyle rules
+checkstyleMain.enabled = true
+checkstyleTest.enabled = true
+
+// FIXME dependency license check needs to be enabled
+dependencyLicenses.enabled = false
+
+// FIXME thirdparty audit needs to be enabled
+thirdPartyAudit.enabled = false
+
+// Uncomment this to skip license header checks
+licenseHeaders.enabled = false
 
 // license of this project
 licenseFile = rootProject.file('LICENSE.txt')
@@ -23,7 +40,7 @@ noticeFile = rootProject.file('NOTICE.txt')
 group 'org.elastic.plugin'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 esplugin {
     name 'es-plugin'
