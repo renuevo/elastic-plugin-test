@@ -31,6 +31,11 @@ thirdPartyAudit.enabled = false
 // Uncomment this to skip license header checks
 licenseHeaders.enabled = false
 
+// Test Skip
+test.enabled = false
+integTest.enabled = false
+forbiddenApisTest.enabled = false
+
 // license of this project
 licenseFile = rootProject.file('LICENSE.txt')
 
@@ -46,10 +51,10 @@ esplugin {
     name 'es-plugin'
     description 'An example plugin showing how to register custom settings'
     classname 'org.elastic.plugin.TestCustomPlugin'
+    version '6.5.4'
     licenseFile rootProject.file('LICENSE.txt')
     noticeFile rootProject.file('NOTICE.txt')
 }
-
 
 dependencies {
     compile 'org.elasticsearch:elasticsearch:6.5.4'
